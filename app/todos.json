@@ -1,0 +1,16 @@
+{
+    "todos": [
+        {
+            "task": "Do a React tutorial",
+            "isCompleted": false
+        },
+        {
+            "task": "Have dinner",
+            "isCompleted": false
+        },
+        {
+            "task": "Do a GraphQL tutorial",
+            "isCompleted": false
+        }
+    ]
+}
