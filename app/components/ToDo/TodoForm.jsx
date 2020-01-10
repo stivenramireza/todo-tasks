@@ -44,7 +44,13 @@ export default class TodoForm extends Component {
             this.setState({
                 error: validateInput
             });
+            return;
+            
         }
+        this.props.createTask(task);
+        this.setState({
+            error: null
+        })
         this.inputText.value = '';
     }
 

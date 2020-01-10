@@ -16,14 +16,23 @@ export default class App extends Component {
         return (
             <div>
                 <h1>React To-Do Tasks</h1>
-                <TodoForm todos={this.state.todos} />
+                <TodoForm 
+                    todos={this.state.todos}
+                    createTask={this.createTask.bind(this)}
+                />
                 <TodoList todos={this.state.todos} />
             </div>
         )
     }
 
     createTask(task) {
-
+        this.state.todos.push({
+            task,
+            isCompleted: false
+        });
+        this.setState({
+            todos: this.state.todos
+        });
     }
 
     toggleTask(task) {
