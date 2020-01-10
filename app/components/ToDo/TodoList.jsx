@@ -10,10 +10,18 @@ export default class TodoList extends Component {
     }
 
     renderItems() {
+        const props = _.omit(
+            this.props,
+            'todos'
+        )
         return (
             _.map(this.props.todos, (todo, index) => {
                 return(
-                    <TodoListItem key={index} {...todo} />
+                    <TodoListItem 
+                        key={index} 
+                        {...todo}
+                        {...props}
+                    />
                 )
             })
         )

@@ -16,9 +16,39 @@ export default class TodoListItem extends Component {
             cursor: 'pointer'
         };
 
+        if(this.state.isEditing) {
+            return (
+                <td>
+                    <form>
+                        <input 
+                            type="text"
+                            defaultValue={task}
+                        />
+                    </form>
+                </td>
+            )
+        }
+
         return(
             <td style={taskStyle}>
                 {task}
+            </td>
+        )
+    }
+
+    renderActionSection() {
+        if(this.state.isEditing) {
+            return (
+                <td>
+                    <button>Save</button>
+                    <button onClick={this.onToggleClick.bind(this)}>Cancel</button>
+                </td>
+            )
+        }
+        return (
+            <td>
+                <button onClick={this.onToggleClick.bind(this)}>Edit</button>
+                <button>Delete</button>
             </td>
         )
     }
@@ -27,10 +57,14 @@ export default class TodoListItem extends Component {
         return (
             <tr>
                 {this.renderTaskSection()}
-                <td>
-                    <button>Save</button>
-                </td>
+                {this.renderActionSection()}
             </tr>
         )
+    }
+
+    onToggleClick() {
+        this.setState({
+            isEditing: !this.state.isEditing
+        });
     }
 }
